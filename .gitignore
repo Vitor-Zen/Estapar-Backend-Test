@@ -1,0 +1,25 @@
+HELP.md
+target/
+
+### Maven Wrapper ###
+.mvn/wrapper/maven-wrapper.jar
+
+### Application Properties ###
+src/main/resources/application.properties
+src/main/resources/application-*.properties
+
+### IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+
+### VS Code ###
+.vscode/
+
+### OS Files ###
+.DS_Store
+Thumbs.db
+
+### Git ###
+.gitattributes
