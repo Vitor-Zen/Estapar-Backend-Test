@@ -1,4 +1,5 @@
 spring.application.name=Estapar
+server.port=3003
 
 # Database
 spring.datasource.url=jdbc:mysql://localhost:3306/estapar
