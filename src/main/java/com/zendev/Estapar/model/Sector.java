@@ -24,6 +24,9 @@ public class Sector {
     private String closeHour;
     private Integer durationLimitMinutes;
 
+    @Builder.Default
+    private Boolean isFull = false;
+
     public static Sector from(GarageResponse.SectorDto dto){
         return Sector.builder()
                 .sector(dto.sector())
