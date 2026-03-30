@@ -22,14 +22,4 @@ public class Spot {
     private Double lat;
     private Double lng;
     private Boolean occupied;
-
-    public static Spot from(GarageResponse.SpotsDto dto){
-        return Spot.builder()
-                .id(dto.id())
-                .sector(dto.sector())
-                .lat(dto.lat())
-                .lng(dto.lng())
-                .occupied(dto.occupied())
-                .build();
-    }
 }
