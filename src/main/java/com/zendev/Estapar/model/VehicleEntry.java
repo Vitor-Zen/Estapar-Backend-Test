@@ -3,6 +3,8 @@ package com.zendev.Estapar.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "vehicle_entries")
 @Getter
@@ -17,8 +19,8 @@ public class VehicleEntry {
     private Long id;
 
     private String licensePlate;
-    private String entryTime;
-    private String exitTime;
+    private LocalDateTime entryTime;
+    private LocalDateTime exitTime;
     private Integer spotId;
     private String sector;
     private Double price;

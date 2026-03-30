@@ -10,6 +10,9 @@ import com.zendev.Estapar.repository.VehicleEntryRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 @Service
 public class WebhookService {
 
@@ -44,7 +47,7 @@ public class WebhookService {
 
         VehicleEntry entry = VehicleEntry.builder()
                 .licensePlate(request.licensePlate())
-                .entryTime(request.entryTime())
+                .entryTime(LocalDateTime.parse(request.entryTime(),DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'" )))
                 .currency("BRL")
                 .build();
 
