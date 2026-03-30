@@ -1,12 +1,14 @@
 package com.zendev.Estapar.service;
 
 import com.zendev.Estapar.dto.GarageResponse;
+import com.zendev.Estapar.exception.BusinessException;
 import com.zendev.Estapar.mapper.SpotMapper;
 import com.zendev.Estapar.mapper.SectorMapper;
 import com.zendev.Estapar.repository.SectorRepository;
 import com.zendev.Estapar.repository.SpotRepository;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -35,7 +37,7 @@ public class GarageService {
                 .body(GarageResponse.class);
 
         if(response == null){
-            throw new RuntimeException("Failed to fetch garage data from simulator");
+            throw new BusinessException("Failed to fetch garage data from simulator", HttpStatus.SERVICE_UNAVAILABLE);
         }
 
         sectorRepository.deleteAll();
