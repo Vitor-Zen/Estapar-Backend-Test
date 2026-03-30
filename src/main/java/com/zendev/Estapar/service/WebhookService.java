@@ -8,6 +8,7 @@ import com.zendev.Estapar.repository.SectorRepository;
 import com.zendev.Estapar.repository.SpotRepository;
 import com.zendev.Estapar.repository.VehicleEntryRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class WebhookService {
@@ -50,6 +51,7 @@ public class WebhookService {
         vehicleEntryRepository.save(entry);
     }
 
+    @Transactional
     private void handleParked(WebhookRequest request){
         Spot spot = spotRepository.findByLatAndLng(request.lat(), request.lng())
                 .orElseThrow(() -> new RuntimeException("Spot not found for given location"));
@@ -66,7 +68,6 @@ public class WebhookService {
 
         entry.setSpotId(spot.getId());
         entry.setSector(spot.getSector());
-        vehicleEntryRepository.save(entry);
 
         // Check if sector exists and get its configurations
         Sector sector = sectorRepository.findBySector(spot.getSector())
