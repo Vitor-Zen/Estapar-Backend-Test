@@ -1,8 +1,8 @@
 package com.zendev.Estapar.service;
 
 import com.zendev.Estapar.dto.GarageResponse;
-import com.zendev.Estapar.model.Sector;
-import com.zendev.Estapar.model.Spot;
+import com.zendev.Estapar.mapper.SpotMapper;
+import com.zendev.Estapar.mapper.SectorMapper;
 import com.zendev.Estapar.repository.SectorRepository;
 import com.zendev.Estapar.repository.SpotRepository;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -16,11 +16,15 @@ public class GarageService {
     private final RestClient estaparRestClient;
     private final SectorRepository sectorRepository;
     private final SpotRepository spotRepository;
+    private final SectorMapper sectorMapper;
+    private final SpotMapper spotMapper;
 
-    public GarageService(RestClient estaparRestClient, SectorRepository sectorRepository, SpotRepository spotRepository) {
+    public GarageService(RestClient estaparRestClient, SectorRepository sectorRepository, SpotRepository spotRepository, SectorMapper sectorMapper, SpotMapper spotMapper) {
         this.estaparRestClient = estaparRestClient;
         this.sectorRepository = sectorRepository;
         this.spotRepository = spotRepository;
+        this.sectorMapper = sectorMapper;
+        this.spotMapper = spotMapper;
     }
 
     @EventListener(ApplicationReadyEvent.class)
@@ -37,7 +41,7 @@ public class GarageService {
         sectorRepository.deleteAll();
         spotRepository.deleteAll();
 
-        response.garage().forEach(dto -> sectorRepository.save(Sector.from(dto)));
-        response.spots().forEach(dto -> spotRepository.save(Spot.from(dto)));
+        response.garage().forEach(dto -> sectorRepository.save(sectorMapper.toEntity(dto)));
+        response.spots().forEach(dto -> spotRepository.save(spotMapper.toEntity(dto)));
     }
 }
