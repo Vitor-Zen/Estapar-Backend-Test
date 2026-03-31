@@ -24,14 +24,6 @@ public class Sector {
     private String closeHour;
     private Integer durationLimitMinutes;
 
-    public static Sector from(GarageResponse.SectorDto dto){
-        return Sector.builder()
-                .sector(dto.sector())
-                .basePrice(dto.basePrice())
-                .maxCapacity(dto.maxCapacity())
-                .openHour(dto.openHour())
-                .closeHour(dto.closeHour())
-                .durationLimitMinutes(dto.durationLimitMinutes())
-                .build();
-    }
+    @Builder.Default
+    private Boolean isFull = false;
 }
