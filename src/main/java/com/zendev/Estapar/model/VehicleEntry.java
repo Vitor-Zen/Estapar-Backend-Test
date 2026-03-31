@@ -1,5 +1,6 @@
 package com.zendev.Estapar.model;
 
+import com.zendev.Estapar.enums.VehicleEntryStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,7 +24,10 @@ public class VehicleEntry {
     private LocalDateTime exitTime;
     private Integer spotId;
     private String sector;
+    private String reservedSector;
     private Double price;
     private String currency;
     private Double occupancyRateAtEntry;
+    @Enumerated(EnumType.STRING)
+    private VehicleEntryStatus status;
 }
