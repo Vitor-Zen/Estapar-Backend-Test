@@ -4,6 +4,7 @@ import com.zendev.Estapar.enums.VehicleEntryStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -24,8 +25,7 @@ public class VehicleEntry {
     private LocalDateTime exitTime;
     private Integer spotId;
     private String sector;
-    private String reservedSector;
-    private Double price;
+    private BigDecimal price;
     private String currency;
     private Double occupancyRateAtEntry;
     @Enumerated(EnumType.STRING)
