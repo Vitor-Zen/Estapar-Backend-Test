@@ -1,6 +1,5 @@
 package com.zendev.Estapar.model;
 
-import com.zendev.Estapar.dto.GarageResponse;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
