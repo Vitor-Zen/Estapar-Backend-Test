@@ -26,4 +26,7 @@ public class Sector {
 
     @Builder.Default
     private Boolean isFull = false;
+
+    @Builder.Default
+    private Integer reservedCount = 0;
 }
