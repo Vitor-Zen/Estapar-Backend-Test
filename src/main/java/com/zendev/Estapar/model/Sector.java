@@ -1,6 +1,5 @@
 package com.zendev.Estapar.model;
 
-import com.zendev.Estapar.dto.GarageResponse;
 import jakarta.persistence.*;
 import lombok.*;
 
